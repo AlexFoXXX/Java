@@ -1,0 +1,16 @@
+
+import java.util.Scanner;
+
+public class Task2 {
+    public static void main(String[] args) {
+
+        //2.Отобразить в окне консоли аргументы командной строки в обратном порядке
+        //https://metanit.com/java/tutorial/7.3.php Stringbuffer похоже переводит вводимые данные в буфер строк, далее обрабатывает и выводит по принципу reverse
+        Scanner vvod = new Scanner(System.in);
+        for (int i = 0; true; i++) {
+            StringBuffer toll = new StringBuffer(vvod.nextLine());
+            toll.reverse();
+            System.out.println("Hello " + toll.toString()); //relbmessa
+        }
+    }
+}
