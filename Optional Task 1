@@ -1,6 +1,23 @@
 Задание. Ввести n чисел с консоли.
 
-1.     Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.
+//1.     Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.
+import java.util.Scanner;
+    class Task1 {
+        public static void main(String[] args) {
+            System.out.print("Введите целые числа через пробел " + "и нажмите <Enter>: ");
+            Scanner scan = new Scanner(System.in);
+            String line = scan.nextLine();
+            String longNum = "", shortNum = line;
+            for (String s : line.split(" ")) {
+                if (s.length() > longNum.length()) longNum = s;
+                if (s.length() < shortNum.length()) shortNum = s;
+            }
+            System.out.println("Самое длинное число: '" + longNum + "'");
+            System.out.println("Длина: " + longNum.length());
+            System.out.println("Самое короткое число: '" + shortNum + "'");
+            System.out.println("Длина: " + shortNum.length());
+        }
+    }
 
 2.     Вывести числа в порядке возрастания (убывания) значений их длины.
 
