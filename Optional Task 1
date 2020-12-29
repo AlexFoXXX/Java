@@ -7,7 +7,8 @@ import java.util.Scanner;
             System.out.print("Введите целые числа через пробел " + "и нажмите <Enter>: ");
             Scanner scan = new Scanner(System.in);
             String line = scan.nextLine();
-            String longNum = "", shortNum = line;
+            String longNum = "";
+            String shortNum = line;
             for (String s : line.split(" ")) {
                 if (s.length() > longNum.length()) longNum = s;
                 if (s.length() < shortNum.length()) shortNum = s;
