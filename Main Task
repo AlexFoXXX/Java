@@ -56,3 +56,25 @@ class Task4 {
 }
 
 //5.   Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу. Осуществить проверку корректности ввода чисел.
+import java.util.Scanner;
+
+class Task5 {
+    static void setMonth(int a) {
+        String[] month = {"январь", "феваль", "март", "апрель", "май", "июнь",
+                "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"};
+        String s;
+        try {
+            s = month[a - 1];
+            System.out.println("Данное число соответствует месяцу - " + s + ".");
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Не корректное число, введите число от 1 до 12.");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите число от 1 до 12: ");
+        int n = sc.nextInt();
+        setMonth(n);
+    }
+}
