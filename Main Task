@@ -42,5 +42,17 @@ class Task3 {
 }
 
 //4.     Ввести целые числа как аргументы командной строки, подсчитать их сумму (произведение) и вывести результат на консоль.
+import java.util.Scanner;
+class Task4 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        for (int i = 0; true; i++) {
+            int a = input.nextInt();
+            int b = input.nextInt();
+            System.out.println("Sum = " + (a + b));
+            System.out.println("Mutli = " + (a * b));
+        }
+    }
+}
 
 //5.   Ввести число от 1 до 12. Вывести на консоль название месяца, соответствующего данному числу. Осуществить проверку корректности ввода чисел.
