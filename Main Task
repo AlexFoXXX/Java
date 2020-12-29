@@ -49,8 +49,8 @@ class Task4 {
         for (int i = 0; true; i++) {
             int a = input.nextInt();
             int b = input.nextInt();
-            System.out.println("Sum = " + (a + b));
-            System.out.println("Mutli = " + (a * b));
+            System.out.println("Сумма вводимых чисел = " + (a + b));
+            System.out.println("Произведение вводимых чисел = " + (a * b));
         }
     }
 }
