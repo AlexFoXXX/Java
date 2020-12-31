@@ -48,7 +48,44 @@ class ClassSort {
 }
 
 
-3.     Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.
+//3.     Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class ClassAver {
+        public static void main(String[] args) {
+            int strNumber = 0;
+            ClassAver sd = new ClassAver();
+            while (true) {
+                System.out.println("Сколько строк желаете ввести?");
+                try {
+                    Scanner sn = new Scanner(System.in);
+                    strNumber = sn.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Ошибка! Ведите целое число строк!");
+                }
+            }
+            String strArr[] = new String[strNumber];
+            Scanner scan = new Scanner(System.in);
+            for (int i = 0; i < strNumber; i++) {
+                System.out.println("Введите строку " + (i + 1));
+                strArr[i] = scan.nextLine();
+            }
+            int strSum = 0;
+            int strAvg = 0;
+            for (int i = 0; i < strArr.length; i++) {
+                strSum += strArr[i].length();
+            }
+            strAvg = strSum / strNumber;
+            System.out.println("Строки с длинной меньше средней и их длинны! ");
+            for (String line: strArr) {
+                if (line.length() < strAvg) {
+                    System.out.println(line + ", " + line.length());
+                }
+            }
+        }
+    }
 
 4.     Найти число, в котором количество различных цифр минимально. Если таких чисел несколько, найти первое из них.
 
