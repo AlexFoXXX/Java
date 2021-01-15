@@ -1,1 +1,215 @@
+//Создать классы, спецификации которых приведены ниже.
+//        Определить конструкторы и методы setТип(), getТип(), toString().
+//        Определить дополнительно методы в классе, создающем массив объектов.
+//        Задать критерий выбора данных и вывести эти данные на консоль.
+//        В каждом классе, обладающем информацией, должно быть объявлено несколько конструкторов.
+//
+//        1. Student: id, Фамилия, Имя, Отчество, Дата рождения, Адрес, Телефон, Факультет, Курс, Группа.
+//        Создать массив объектов. Вывести:
+//        a) список студентов заданного факультета;
+//        b) списки студентов для каждого факультета и курса;
+//        c) список студентов, родившихся после заданного года;
+//        d) список учебной группы.
+
+
+public class AllStudents {
+    public static void main(String[] args) {
+        Student st1 = new Student("Иван", "Иванович", "Иванов", "20.02.2000", "+375291111111", "ИИ", "1", "1");
+        Student st2 = new Student("Петр", "Петрович", "Петров", "13.01.2001", "+375252222222", "АСУ", "2", "1");
+        Student st3 = new Student("Семен", "Семенович", "Семенов", "15.07.2003", "+37525333333", "АСУ", "3", "2");
+        Student st4 = new Student("Александр", "Сергеевич", "Пушкин", "15.04.1985", "+375254444444", "ИИ", "1", "1");
+        Student st5 = new Student("Владимир", "Владимирович", "Медведев", "16.04.2005", "+37525555555", "ИИ", "2", "3");
+        Student st6 = new Student("Павел", "Снежок", "Воля", "07.07.1999", "+37525666666", "Экономист", "3", "2");
+        Student st7 = new Student("Гарик", "Гаврилович", "Бульдог", "03.12.2000", "+37525777777", "Экономист", "1", "3");
+
+        StudentList newList=new StudentList();
+        newList.addStudent(st1);
+        newList.addStudent(st2);
+        newList.addStudent(st3);
+        newList.addStudent(st4);
+        newList.addStudent(st5);
+        newList.addStudent(st6);
+        newList.addStudent(st7);
+
+        newList.facultyPrint("АСУ");//a) список студентов заданного факультета
+        newList.facultyCoursePrint("ИИ","2");//b) списки студентов для каждого факультета и курса
+        newList.yearOfBirthPrint("2001");//c) список студентов, родившихся после заданного года
+        newList.groupPrint("1");//d) список учебной группы
+        newList.All();//Список всех студентов
+    }
+}
+
+
+///////////////////////////////////////
+
+public class Student {
+
+    private int id;
+    private static int secondId=1;
+    private String name;
+    private String secondName;
+    private String born;
+    private String fatherName;
+    private String phone;
+    private String faculty;
+    private String course;
+    private String group;
+    public Student( String name, String secondName, String fatherName,String born,  String phone, String faculty, String course, String group) {
+
+        this.name=name;
+        this.secondName=secondName;
+        this.fatherName=fatherName;
+        this.born=born;
+        this.phone=phone;
+        this.faculty=faculty;
+        this.course=course;
+        this.group=group;
+        id=secondId++;
+        setName(name);
+        setSecondName(secondName);
+        setFatherName(fatherName);
+        setBorn(born);
+        setPhone(phone);
+        setFaculty(faculty);
+        setCourse(course);
+        setGroup(group);}
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSecondName() {
+        return name;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public String getBorn() {
+        return born;
+    }
+
+    public void setBorn(String born) {
+        this.born = born;
+    }
+
+
+
+
+    public String toString() {
+        return "Студент {"+" id " +id+
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", born='" + born + '\'' +
+                ", phone='" + phone + '\'' +
+                ", faculty='" + faculty + '\'' +
+                ", course='" + course + '\'' +
+                ", group='" + group + '\'' +
+                '}';
+    }
+    public String fullName(){
+        return fatherName+" "+secondName+" "+name;
+    }
+}
+
+
+////////////////////////////////
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentList {
+    private List<Student>studentsList= new ArrayList<>();
+    public void addStudent(Student a){
+        studentsList.add(a);
+    }
+    public void facultyPrint(String faculty){
+        System.out.println("a) список студентов заданного факультета "+faculty+":");
+        for(Student st:studentsList){
+            if(st.getFaculty().equals(faculty)){
+                System.out.println(st.toString());
+            }
+        }
+    }
+    public void facultyCoursePrint(String faculty,String course){
+        System.out.println("b) списки студентов для каждого факультета "+faculty+" и курса "+course+":");
+        for(Student st:studentsList){
+            if(st.getFaculty().equals(faculty)&st.getCourse().equals(course)){
+                System.out.println(st.toString());}
+        }
+    }
+
+    public void yearOfBirthPrint(String year){
+        System.out.println("c) список студентов, родившихся после "+year+" года:");
+        for(Student st:studentsList){
+            if(parseYear(st.getBorn().substring(6))>parseYear(year)){
+                System.out.println(st.toString());}
+        }
+    }
+
+    public void groupPrint(String group){
+        System.out.println("d) список учебной группы "+group+":");
+        for(Student st:studentsList){
+            if(st.getGroup().equals(group)){
+                System.out.println(st.toString());
+            }
+        }
+    }
+
+
+    public void All(){
+        System.out.println("Список всех студентов:");
+        for(Student st:studentsList){
+            System.out.println(st.toString());}
+    }
+
+    public int parseYear(String years){
+        return Integer.parseInt(years);
+    }
+
+}
+
+
+
 
